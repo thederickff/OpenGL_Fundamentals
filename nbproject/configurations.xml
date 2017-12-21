@@ -37,7 +37,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerOptionItem>-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm</linkerOptionItem>
+            <linkerOptionItem>-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

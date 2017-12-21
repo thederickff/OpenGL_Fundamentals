@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm
+LDLIBSOPTIONS=-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
