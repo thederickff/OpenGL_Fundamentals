@@ -1,3 +1,3 @@
-# FirstGLFW
-My first project in cpp with the OpenGL library GLFW.
+# RightWayGLFW
+The right way to start a with GLFW OpenGL library in cpp.
 I am learning it from a series of videos on Youtube, the Channel is called: **The Cherno**.
