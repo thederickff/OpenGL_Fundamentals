@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=firstglfw
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/firstglfw
+CND_ARTIFACT_NAME_Debug=rightwayglfw
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/rightwayglfw
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=firstglfw.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/firstglfw.tar
+CND_PACKAGE_NAME_Debug=rightwayglfw.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/rightwayglfw.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=firstglfw
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/firstglfw
+CND_ARTIFACT_NAME_Release=rightwayglfw
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/rightwayglfw
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=firstglfw.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/firstglfw.tar
+CND_PACKAGE_NAME_Release=rightwayglfw.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/rightwayglfw.tar
 #
 # include compiler specific variables
 #
