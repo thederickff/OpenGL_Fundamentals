@@ -12,7 +12,7 @@
 #include <string>
 #include <sstream>
 
-
+#define DEBUG
 //#define ASSERT(x) if (!(x)) _debugbreak;
 #ifdef DEBUG
 #define GLCall(x) GLClearError(); x; GLLogCall(#x, __FILE__, __LINE__);
@@ -136,8 +136,9 @@ int main(int argc, char** argv) {
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
     
+    /* Initialize the library GLEW */
     if (glewInit() != GLEW_OK)
-        std::cout << "Error" << std::endl;
+        return -1;
 
     std::cout << glGetString(GL_VERSION) << std::endl;
     
