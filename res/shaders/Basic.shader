@@ -1,5 +1,5 @@
 #shader vertex
-#version 300 es
+#version 330 core
             
 layout(location = 0) in vec4 position;
             
@@ -9,7 +9,7 @@ void main()
 }
   
 #shader fragment
-#version 300 es
+#version 330 core
             
 layout(location = 0) out mediump vec4 color;
             
