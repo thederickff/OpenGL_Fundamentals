@@ -12,6 +12,7 @@
 #include <string>
 #include <sstream>
 
+#define alloca __builtin_alloca
 #define DEBUG
 //#define ASSERT(x) if (!(x)) _debugbreak;
 #ifdef DEBUG
