@@ -13,7 +13,7 @@ void main()
             
 layout(location = 0) out mediump vec4 color;
 
-uniform vec4 u_Color;
+uniform mediump vec4 u_Color;
             
 void main()
 {
