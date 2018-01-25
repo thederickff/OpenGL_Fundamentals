@@ -12,13 +12,16 @@
 #include <string>
 #include <sstream>
 
-//#define alloca __builtin_alloca 
+#ifdef _WIN32
+    #define alloca __builtin_alloca 
+#endif
+
 #define DEBUG
 //#define ASSERT(x) if (!(x)) _debugbreak;
 #ifdef DEBUG
-#define GLCall(x) GLClearError(); x; GLLogCall(#x, __FILE__, __LINE__);
+    #define GLCall(x) GLClearError(); x; GLLogCall(#x, __FILE__, __LINE__);
 #else
-#define GLCall(x) x;
+    #define GLCall(x) x;
 #endif
 static void GLClearError()
 {
@@ -169,7 +172,7 @@ int main(int argc, char** argv) {
     GLCall(glGenBuffers(1, &buffer));
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
     GLCall(glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float), positions, GL_STATIC_DRAW));
-    // Set the layout of our vertex buffer, enable index 0 which is linked to vao
+    // Set the layout of our vertex buffer, enable index 0 which is linked to vertex array object
     GLCall(glEnableVertexAttribArray(0));
     GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
     
