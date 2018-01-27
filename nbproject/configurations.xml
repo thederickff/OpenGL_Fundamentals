@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>IndexBuffer.h</itemPath>
+      <itemPath>Renderer.h</itemPath>
+      <itemPath>VertexBuffer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,6 +16,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>IndexBuffer.cpp</itemPath>
+      <itemPath>Renderer.cpp</itemPath>
+      <itemPath>VertexBuffer.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -42,6 +48,18 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="IndexBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IndexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VertexBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VertexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="res/shader/Basic.shader" ex="false" tool="3" flavor2="0">
@@ -67,6 +85,18 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="IndexBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="IndexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VertexBuffer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VertexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="res/shader/Basic.shader" ex="false" tool="3" flavor2="0">

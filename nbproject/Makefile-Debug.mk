@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/IndexBuffer.o \
+	${OBJECTDIR}/Renderer.o \
+	${OBJECTDIR}/VertexBuffer.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +64,21 @@ LDLIBSOPTIONS=-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rightwayglfw: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rightwayglfw ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/IndexBuffer.o: IndexBuffer.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IndexBuffer.o IndexBuffer.cpp
+
+${OBJECTDIR}/Renderer.o: Renderer.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Renderer.o Renderer.cpp
+
+${OBJECTDIR}/VertexBuffer.o: VertexBuffer.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VertexBuffer.o VertexBuffer.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
