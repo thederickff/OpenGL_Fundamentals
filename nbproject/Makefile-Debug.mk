@@ -59,11 +59,11 @@ LDLIBSOPTIONS=-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rightwayglfw
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/thewayglfw
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rightwayglfw: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/thewayglfw: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/rightwayglfw ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/thewayglfw ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/IndexBuffer.o: IndexBuffer.cpp
 	${MKDIR} -p ${OBJECTDIR}
