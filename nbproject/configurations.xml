@@ -6,7 +6,9 @@
                    projectFiles="true">
       <itemPath>IndexBuffer.h</itemPath>
       <itemPath>Renderer.h</itemPath>
+      <itemPath>VertexArray.h</itemPath>
       <itemPath>VertexBuffer.h</itemPath>
+      <itemPath>VertexBufferLayout.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -18,6 +20,7 @@
                    projectFiles="true">
       <itemPath>IndexBuffer.cpp</itemPath>
       <itemPath>Renderer.cpp</itemPath>
+      <itemPath>VertexArray.cpp</itemPath>
       <itemPath>VertexBuffer.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -56,9 +59,15 @@
       </item>
       <item path="Renderer.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="VertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="VertexBuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VertexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VertexBufferLayout.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -93,9 +102,15 @@
       </item>
       <item path="Renderer.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="VertexArray.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VertexArray.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="VertexBuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VertexBuffer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VertexBufferLayout.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
