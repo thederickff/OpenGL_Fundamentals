@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/IndexBuffer.o \
 	${OBJECTDIR}/Renderer.o \
+	${OBJECTDIR}/Shader.o \
 	${OBJECTDIR}/VertexArray.o \
 	${OBJECTDIR}/VertexBuffer.o \
 	${OBJECTDIR}/main.o
@@ -56,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -75,6 +76,11 @@ ${OBJECTDIR}/Renderer.o: Renderer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Renderer.o Renderer.cpp
+
+${OBJECTDIR}/Shader.o: Shader.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Shader.o Shader.cpp
 
 ${OBJECTDIR}/VertexArray.o: VertexArray.cpp
 	${MKDIR} -p ${OBJECTDIR}

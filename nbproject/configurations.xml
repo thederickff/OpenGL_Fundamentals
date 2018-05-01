@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>IndexBuffer.h</itemPath>
       <itemPath>Renderer.h</itemPath>
+      <itemPath>Shader.h</itemPath>
       <itemPath>VertexArray.h</itemPath>
       <itemPath>VertexBuffer.h</itemPath>
       <itemPath>VertexBufferLayout.h</itemPath>
@@ -20,6 +21,7 @@
                    projectFiles="true">
       <itemPath>IndexBuffer.cpp</itemPath>
       <itemPath>Renderer.cpp</itemPath>
+      <itemPath>Shader.cpp</itemPath>
       <itemPath>VertexArray.cpp</itemPath>
       <itemPath>VertexBuffer.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -59,6 +61,10 @@
       </item>
       <item path="Renderer.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Shader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Shader.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="VertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VertexArray.h" ex="false" tool="3" flavor2="0">
@@ -93,6 +99,11 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lglfw -lGL -lX11 -lpthread -lXxf86vm -lm -lGLEW</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="IndexBuffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -101,6 +112,10 @@
       <item path="Renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Shader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Shader.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="VertexArray.cpp" ex="false" tool="1" flavor2="0">
       </item>
