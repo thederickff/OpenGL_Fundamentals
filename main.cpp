@@ -6,30 +6,13 @@
 #include <string>
 #include <sstream>
 
+#include "Renderer.h"
+
 #define DEBUG
 
 #ifdef _WIN32
     #define alloca __builtin_alloca 
 #endif
-
-#define GLCall(x) GLClearError(); x; GLLogCall(#x, __FILE__, __LINE__);
-
-static void GLClearError()
-{
-    while (glGetError() != GL_NO_ERROR);
-}
-
-static bool GLLogCall(const char* function, const char* file, int line)
-{
-    while (GLenum error = glGetError())
-    {
-        std::cout << "[OpenGL error] (" << error << "): " << function << " call in "
-                  << file << " file at line " << line << std::endl;
-        return false;
-    }
-
-    return true;
-}
 
 struct ShaderProgramSource
 {
@@ -198,7 +181,7 @@ int main(int argc, char** argv)
 
         GLCall(glBindVertexArray(vertexArrayObject));
         GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject));
-        
+
         GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
          
         if (r > 1.0f)
