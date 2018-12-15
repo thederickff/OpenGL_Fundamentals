@@ -12,6 +12,22 @@
     #define alloca __builtin_alloca 
 #endif
 
+static void GLClearError()
+{
+    while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall()
+{
+    while (GLenum error = glGetError())
+    {
+        std::cout << "[OpenGL error] (" << error << ")" << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
 struct ShaderProgramSource
 {
     std::string VertexShader;
