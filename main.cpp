@@ -3,6 +3,12 @@
 
 #include <iostream>
 
+#define DEBUG
+
+#ifdef _WIN32
+    #define alloca __builtin_alloca 
+#endif
+
 static unsigned int CompileShader(unsigned int type, const std::string& source) 
 {
     unsigned int id = glCreateShader(type);
