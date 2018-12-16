@@ -54,7 +54,6 @@ static ShaderProgramSource ParseShader(const std::string& filepath)
 static unsigned int CompileShader(unsigned int type, const std::string& source) 
 {
     unsigned int id = glCreateShader(type);
-    //const char* src = &source[0];
     const char* src = source.c_str();
     GLCall(glShaderSource(id, 1, &src, nullptr));
     GLCall(glCompileShader(id));
