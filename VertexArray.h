@@ -10,7 +10,13 @@ public:
     VertexArray();
     ~VertexArray();
 
-    void AddBuffer(const VertexBuffer &vb, const vVertexBufferLayout &layout);
+    void AddBuffer(const VertexBuffer &vb, const VertexBufferLayout &layout);
+
+    void Bind() const;
+    void Unbind() const;
+
+private:
+    unsigned int m_RendererId;
 };
 
 #endif // defined(VERTEX_ARRAY_H)
