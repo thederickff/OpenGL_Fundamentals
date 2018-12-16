@@ -144,18 +144,14 @@ int main(int argc, char** argv)
             0, 3, 2
         };
 
-        unsigned int vertexArrayObject;
-        GLCall(glGenVertexArrays(1, &vertexArrayObject));
-        GLCall(glBindVertexArray(vertexArrayObject));
-
         VertexArray va;
-        
+
         VertexBuffer vb(positions, 4 * 2 * sizeof(float));
         VertexBufferLayout layout;
         layout.Push<float>(2);
 
         va.AddBuffer(vb, layout);
-
+        
         IndexBuffer ib(indices, 6);
 
         ShaderProgramSource source = ParseShader("res/shaders/basic.shader");
