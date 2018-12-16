@@ -132,10 +132,10 @@ int main(int argc, char** argv)
     // Create a scope to destroy VertexBuffer and IndexBuffer objects before glfwTerminate()
     {
         float positions[] = {
-        -0.5f, -0.5f, // 0
+           -0.5f, -0.5f, // 0
             0.5f, -0.5f, // 1
             0.5f,  0.5f, // 2
-        -0.5f,  0.5f, // 3
+           -0.5f,  0.5f, // 3
         };
 
         unsigned int indices[] = {
@@ -186,7 +186,7 @@ int main(int argc, char** argv)
                 inc = -0.02f;
             else if (r < 0.0f)
                 inc = 0.02f;
-            
+
             r += inc;
 
             /* Swap front and back buffers */
