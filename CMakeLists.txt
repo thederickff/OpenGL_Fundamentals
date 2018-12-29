@@ -11,6 +11,6 @@ find_package(GLEW REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
 
-add_executable(myapp main.cpp Renderer.cpp VertexBuffer.cpp IndexBuffer.cpp VertexArray.cpp)
+add_executable(myapp main.cpp Renderer.cpp VertexBuffer.cpp IndexBuffer.cpp VertexArray.cpp Shader.cpp)
 
 target_link_libraries(myapp ${OPENGL_gl_LIBRARY} glfw ${GLEW_LIBRARIES})
