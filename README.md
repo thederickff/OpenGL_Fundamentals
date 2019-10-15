@@ -1,6 +1,6 @@
 # OpenGL Fundamentals
 
-This repository contains the code for TheCherno's series on OpenGL. It uses CMake to manage the build process, making it cross-platform.
+This repository contains the code for TheCherno's series on OpenGL. It uses CMake to manage the build process, making it cross-platform. Follow along the video playlist below:
 
 
 [![Watch his video series here.](https://img.youtube.com/vi/W3gAzLwfIP0/0.jpg)](https://youtu.be/W3gAzLwfIP0?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2)
