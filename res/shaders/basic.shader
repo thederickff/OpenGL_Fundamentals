@@ -1,5 +1,5 @@
 #shader vertex
-#version 300 es
+#version 450 core
 
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec2 texCoord;
@@ -13,7 +13,7 @@ void main()
 }
 
 #shader fragment
-#version 300 es
+#version 450 core
 
 layout(location = 0) out mediump vec4 color;
 
@@ -24,6 +24,7 @@ uniform mediump sampler2D u_Texture;
 
 void main()
 {
-    mediump vec4 textColor = texture(u_Texture, v_TextCoord);
-    color = textColor;
+    // mediump vec4 textColor = texture(u_Texture, v_TextCoord);
+    // color = textColor;
+    color = u_Color;
 }
