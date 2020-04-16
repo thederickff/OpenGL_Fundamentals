@@ -19,12 +19,12 @@ layout(location = 0) out mediump vec4 color;
 
 in mediump vec2 v_TextCoord;
 
-uniform mediump vec4 u_Color;
+// uniform mediump vec4 u_Color;
 uniform mediump sampler2D u_Texture;
 
 void main()
 {
-    // mediump vec4 textColor = texture(u_Texture, v_TextCoord);
-    // color = textColor;
-    color = u_Color;
+    mediump vec4 textColor = texture(u_Texture, v_TextCoord);
+    color = textColor;
+    // color = u_Color;
 }

@@ -55,27 +55,16 @@ int main(int argc, char** argv)
 
     // Create a scope to destroy VertexBuffer and IndexBuffer objects before glfwTerminate()
     {
-        // float positions[] = {
-        //    -0.5f, -0.5f, 0.0f, 0.0f, // 0
-        //     0.5f, -0.5f, 1.0f, 0.0f, // 1
-        //     0.5f,  0.5f, 1.0f, 1.0f, // 2
-        //    -0.5f,  0.5f, 0.0f, 1.0f// 3
-        // };
-
         float positions[] = {
-            -0.75f,   0.0f, // 0
-            -0.25f,  0.5f, // 1
-             0.25f,  0.5f, // 2
-             0.75f,   0.0f, // 3
-             0.25f, -0.5f, // 4
-            -0.25f, -0.5f, // 5
+           -0.5f, -0.5f, 0.0f, 0.0f, // 0
+            0.5f, -0.5f, 1.0f, 0.0f, // 1
+            0.5f,  0.5f, 1.0f, 1.0f, // 2
+           -0.5f,  0.5f, 0.0f, 1.0f// 3
         };
 
         unsigned int indices[] = {
-            0, 1, 5,
-            1, 5, 2,
-            4, 5, 2,
-            2, 4, 3
+            0, 1, 2,
+            2, 3, 0
         };
 
         GLCall(glEnable(GL_BLEND));
@@ -83,10 +72,10 @@ int main(int argc, char** argv)
 
         VertexArray va;
 
-        VertexBuffer vb(positions, 2 * 6 * sizeof(float));
+        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
         VertexBufferLayout layout;
         layout.Push<float>(2);
-        // layout.Push<float>(2);
+        layout.Push<float>(2);
 
         va.AddBuffer(vb, layout);
         
@@ -94,11 +83,11 @@ int main(int argc, char** argv)
 
         Shader shader("res/shaders/basic.shader");
         shader.Bind();
-        shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
+        // shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
-        // Texture texture("res/textures/cherno.jpg");
-        // texture.Bind();
-        // shader.SetUniform1i("u_Texture", 0);
+        Texture texture("res/textures/cherno.png");
+        texture.Bind();
+        shader.SetUniform1i("u_Texture", 0);
 
         va.Unbind();
         shader.Unbind();
@@ -116,7 +105,7 @@ int main(int argc, char** argv)
             renderer.Clear();
     
             shader.Bind();
-            shader.SetUniform4f("u_Color", r, 0.8f, 0.0f, 1.0f);
+            // shader.SetUniform4f("u_Color", r, 0.8f, 0.0f, 1.0f);
         
             renderer.Draw(va, ib, shader);
             
