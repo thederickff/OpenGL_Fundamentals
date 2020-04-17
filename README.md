@@ -14,7 +14,7 @@ To compile you first need to have CMake, GLEW, and GLFW installed. In the termin
 
 ```
 sudo apt-get update
-sudo apt-get -y install build-essential cmake libglfw3-dev libglew-dev
+sudo apt-get -y install build-essential cmake libglfw3-dev libglew-dev libglm-dev
 ```
 
 ## Compilation
