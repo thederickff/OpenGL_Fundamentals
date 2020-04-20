@@ -14,6 +14,10 @@
     #define alloca __builtin_alloca 
 #endif
 
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw.h"
+#include "imgui/imgui_impl_opengl3.h"
+
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
@@ -36,7 +40,7 @@ int main(int argc, char** argv)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "OpenGL Fundamentals", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -54,6 +58,11 @@ int main(int argc, char** argv)
         return -1;
 
     std::cout << glGetString(GL_VERSION) << std::endl;
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(NULL);
 
     // Create a scope to destroy VertexBuffer and IndexBuffer objects before glfwTerminate()
     {
@@ -85,14 +94,9 @@ int main(int argc, char** argv)
 
         glm::mat4 proj = glm::ortho(-4.0f, 4.0f, -3.0f, 3.0f, -1.0f, 1.0f);
         glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-
-        glm::mat4 mvp = proj * view * model;
 
         Shader shader("res/shaders/basic.shader");
         shader.Bind();
-        // shader.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
-        shader.SetUniformMatrix4fv("u_MVP", mvp);
 
         Texture texture("res/textures/cherno.png");
         texture.Bind();
@@ -107,14 +111,23 @@ int main(int argc, char** argv)
 
         float r = 0.0f;
         float inc = 0.02f;
+
+        glm::vec3 translation(0.5f, 0.5, 0.0f);
+
+        // ImVec4 quad_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
             renderer.Clear();
-    
+
+            glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
+            glm::mat4 mvp = proj * view * model;
+
             shader.Bind();
-            // shader.SetUniform4f("u_Color", r, 0.8f, 0.0f, 1.0f);
+            shader.SetUniformMatrix4fv("u_MVP", mvp);
+            // shader.SetUniform4f("u_Color", quad_color.x, quad_color.y, quad_color.z, quad_color.w);
         
             renderer.Draw(va, ib, shader);
             
@@ -125,6 +138,16 @@ int main(int argc, char** argv)
 
             r += inc;
 
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
+            {
+                ImGui::SliderFloat3("Translation", &translation.x, -4.0f, 4.0f);
+                // ImGui::ColorEdit3("Quad color", (float*) &quad_color);
+            }
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+            
             /* Swap front and back buffers */
             GLCall(glfwSwapBuffers(window));
     
@@ -133,6 +156,12 @@ int main(int argc, char** argv)
         }
 
     }
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+    
+    GLCall(glfwDestroyWindow(window));
     GLCall(glfwTerminate());
 
     return 0;

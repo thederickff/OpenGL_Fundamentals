@@ -10,7 +10,13 @@ find_package(GLEW REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(vendor)
 
-add_executable(myapp main.cpp Renderer.cpp VertexBuffer.cpp IndexBuffer.cpp VertexArray.cpp Shader.cpp vendor/stb_image/stb_image.cpp Texture.cpp)
+file(GLOB SOURCES *.cpp)
+file(GLOB STB_IMG_SRC vendor/stb_image/*.cpp)
+file(GLOB IMGUI_SRC vendor/imgui/*.cpp)
+
+
+add_executable(myapp ${SOURCES} ${STB_IMG_SRC} ${IMGUI_SRC})
 
 target_link_libraries(myapp ${OPENGL_gl_LIBRARY} glfw ${GLEW_LIBRARIES})

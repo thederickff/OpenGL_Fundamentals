@@ -37,3 +37,6 @@ myapp
 
 # IDE
 .vscode/
+
+# Others
+imgui.ini

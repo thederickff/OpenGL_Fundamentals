@@ -21,7 +21,7 @@ layout(location = 0) out mediump vec4 color;
 
 in mediump vec2 v_TextCoord;
 
-// uniform mediump vec4 u_Color;
+uniform mediump vec4 u_Color;
 uniform mediump sampler2D u_Texture;
 
 void main()
