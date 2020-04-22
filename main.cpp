@@ -56,36 +56,54 @@ int main(int argc, char** argv)
 
     std::cout << glGetString(GL_VERSION) << std::endl;
 
-    IMGUI_CHECKVERSION();
-    ImGuiContext* context = ImGui::CreateContext();
-    ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init("#version 450 core");
-
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
     Renderer renderer;
 
-    test::TestClearColor test;
+    IMGUI_CHECKVERSION();
+    ImGuiContext* context = ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 450 core");
+
+    test::Test* currentTest = nullptr;
+    test::TestMenu* testMenu = new test::TestMenu(currentTest);
+    currentTest = testMenu;
+
+    testMenu->push<test::TestClearColor>("Clear Color Test");
 
     while (!glfwWindowShouldClose(window))
     {
+        GLCall(glClearColor(0.0, 0.0, 0.0, 1.0));
         renderer.Clear();
 
-        test.onUpdate(0);
-        test.onRender();
+        currentTest->onUpdate(0);
+        currentTest->onRender();
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        test.onImGuiRender();
+        ImGui::Begin("Test");
+        if (currentTest != testMenu && ImGui::Button("<-")) {
+            delete currentTest;
+            currentTest = testMenu;
+        }
+            
+        currentTest->onImGuiRender();
+        ImGui::End();
+
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         
         GLCall(glfwSwapBuffers(window));
         GLCall(glfwPollEvents());
     }
+    
+    if (currentTest != testMenu) {
+        delete currentTest;
+    }
+    delete testMenu;
 
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();

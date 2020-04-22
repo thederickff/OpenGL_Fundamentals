@@ -6,7 +6,7 @@
 namespace test {
 
   TestClearColor::TestClearColor()
-  : m_clearColor({ 0.2, 0.3, 0.8, 1.0 })
+  : m_clearColor { 0.2, 0.3, 0.8, 1.0 }
   {
   }
 
