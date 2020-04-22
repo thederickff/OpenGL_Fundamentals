@@ -10,9 +10,10 @@ find_package(GLEW REQUIRED)
 
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${GLEW_INCLUDE_DIRS})
+include_directories(./)
 include_directories(vendor)
 
-file(GLOB SOURCES *.cpp)
+file(GLOB SOURCES *.cpp tests/*.cpp)
 file(GLOB STB_IMG_SRC vendor/stb_image/*.cpp)
 file(GLOB IMGUI_SRC vendor/imgui/*.cpp)
 
