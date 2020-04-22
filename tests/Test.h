@@ -4,6 +4,9 @@
 #include <vector>
 #include <functional>
 
+#include "Renderer.h"
+#include "imgui/imgui.h"
+
 namespace test {
   class Test
   {
@@ -12,7 +15,7 @@ namespace test {
     virtual ~Test() {}
 
     virtual void onUpdate(int deltaTime) {}
-    virtual void onRender() {}
+    virtual void onRender(const Renderer& renderer) {}
     virtual void onImGuiRender() {}
   };
 
@@ -24,10 +27,9 @@ namespace test {
 
     void onImGuiRender() override;
 
-    template<typename T>
-    void push(const std::string &label)
+    void push(const std::string &label, const std::function<Test *()> &testCallback)
     {
-      m_tests.push_back(std::make_pair(label, [](){ return new T(); }));
+      m_tests.push_back(std::make_pair(label, testCallback));
     }
 
   private:

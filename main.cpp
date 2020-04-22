@@ -19,12 +19,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 #include "Renderer.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
-#include "VertexBufferLayout.h"
-#include "Shader.h"
-#include "Texture.h"
+#include "tests/TestQuad.h"
 #include "tests/TestClearColor.h"
 
 int main(int argc, char** argv)
@@ -70,7 +65,8 @@ int main(int argc, char** argv)
     test::TestMenu* testMenu = new test::TestMenu(currentTest);
     currentTest = testMenu;
 
-    testMenu->push<test::TestClearColor>("Clear Color Test");
+    testMenu->push("Clear Color Test", [](){ return new test::TestClearColor(); });
+    testMenu->push("Quad Test", [](){ return new test::TestQuad(); });
 
     while (!glfwWindowShouldClose(window))
     {
@@ -78,7 +74,7 @@ int main(int argc, char** argv)
         renderer.Clear();
 
         currentTest->onUpdate(0);
-        currentTest->onRender();
+        currentTest->onRender(renderer);
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();

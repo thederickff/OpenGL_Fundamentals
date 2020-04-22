@@ -12,7 +12,7 @@ namespace test {
     ~TestClearColor();
 
     void onUpdate(int deltaTime) override;
-    void onRender() override;
+    void onRender(const Renderer &renderer) override;
     void onImGuiRender() override;
   private:
     float m_clearColor[4];
