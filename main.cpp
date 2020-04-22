@@ -93,7 +93,7 @@ int main(int argc, char** argv)
         IndexBuffer ib(indices, 4 * 3);
 
         glm::mat4 proj = glm::ortho(-4.0f, 4.0f, -3.0f, 3.0f, -1.0f, 1.0f);
-        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 
         Shader shader("res/shaders/basic.shader");
         shader.Bind();
@@ -112,9 +112,8 @@ int main(int argc, char** argv)
         float r = 0.0f;
         float inc = 0.02f;
 
-        glm::vec3 translation(0.5f, 0.5, 0.0f);
-
-        // ImVec4 quad_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+        glm::vec3 translationA(1.0f, 0.0f, 0.0f);
+        glm::vec3 translationB(-1.0f, 0.0f, 0.0f);
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -122,14 +121,25 @@ int main(int argc, char** argv)
             /* Render here */
             renderer.Clear();
 
-            glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
-            glm::mat4 mvp = proj * view * model;
+            {
+                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
+                glm::mat4 mvp = proj * view * model;
 
-            shader.Bind();
-            shader.SetUniformMatrix4fv("u_MVP", mvp);
-            // shader.SetUniform4f("u_Color", quad_color.x, quad_color.y, quad_color.z, quad_color.w);
-        
-            renderer.Draw(va, ib, shader);
+                shader.Bind();
+                shader.SetUniformMatrix4fv("u_MVP", mvp);
+            
+                renderer.Draw(va, ib, shader);
+            }
+
+            {
+                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
+                glm::mat4 mvp = proj * view * model;
+
+                shader.Bind();
+                shader.SetUniformMatrix4fv("u_MVP", mvp);
+            
+                renderer.Draw(va, ib, shader);
+            }
             
             if (r > 1.0f)
                 inc = -0.02f;
@@ -142,7 +152,8 @@ int main(int argc, char** argv)
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
             {
-                ImGui::SliderFloat3("Translation", &translation.x, -4.0f, 4.0f);
+                ImGui::SliderFloat3("Translation A", &translationA.x, -4.0f, 4.0f);
+                ImGui::SliderFloat3("Translation B", &translationB.x, -4.0f, 4.0f);
                 // ImGui::ColorEdit3("Quad color", (float*) &quad_color);
             }
             ImGui::Render();
