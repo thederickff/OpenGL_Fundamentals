@@ -9,7 +9,7 @@ namespace test {
   : m_window(window), m_shader("res/shaders/testQuad3d.shader"),
     m_color{1, 0, 1, 1}, m_fov(90.0f), m_velocity(2.5f), m_mouseSensitivity(0.10f),
     m_cameraPos{0.0f, 0.0f, 3.0f}, m_cameraFront{0.0f, 0.0f, -1.0f}, m_cameraUp{0.0f, 1.0f, 0.0f},
-    m_lastMouseX(0.0f), m_lastMouseY(0.0f), m_yaw(-90.0f), m_pitch(0.0f)
+    m_lastMouseX(0.0f), m_lastMouseY(0.0f), m_yaw(-90.0f), m_pitch(0.0f), m_yPos(0.0f)
   {
     float vertices[] = {
       -0.5f, -0.5f, -0.5f,
@@ -82,16 +82,7 @@ namespace test {
 
     m_shader.Bind();
 
-
-    // glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-    // glm::vec3 cameraDirection = glm::normalize(m_cameraPos - cameraTarget);
-    // glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f); 
-    // glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
-    // m_cameraUp = glm::cross(cameraDirection, cameraRight);
-
-    // m_view = glm::lookAt(m_cameraPos, 
-  	// 	   glm::vec3(0.0f, 0.0f, 0.0f), 
-  	// 	   glm::vec3(0.0f, 1.0f, 0.0f));
+    m_cameraPos.y = m_yPos;
     m_view = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraFront, m_cameraUp);
 
     m_projection = glm::perspective(glm::radians(m_fov), 800.0f / 600.0f, 0.1f, 100.0f);
@@ -135,11 +126,11 @@ namespace test {
     }
 
     if (isKeyPressed(m_window, GLFW_KEY_SPACE)) {
-      m_cameraPos.y += cameraSpeed;
+      m_yPos += cameraSpeed;
     }
 
     if (isKeyPressed(m_window, GLFW_KEY_LEFT_SHIFT)) {
-      m_cameraPos.y -= cameraSpeed;
+      m_yPos -= cameraSpeed;
     }
 
     if (isKeyPressed(m_window, GLFW_KEY_ESCAPE)) {

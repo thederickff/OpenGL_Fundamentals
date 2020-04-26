@@ -35,6 +35,6 @@ namespace test {
 
     glm::vec3 m_cameraPos, m_cameraFront, m_cameraUp;
 
-    float m_lastMouseX, m_lastMouseY, m_yaw, m_pitch;
+    float m_lastMouseX, m_lastMouseY, m_yaw, m_pitch, m_yPos;
   };
 }
