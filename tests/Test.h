@@ -1,6 +1,9 @@
 #ifndef __OpenGLFundamentals_Test__
 #define __OpenGLFundamentals_Test__
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 #include <vector>
 #include <functional>
 
@@ -17,6 +20,14 @@ namespace test {
     virtual void onUpdate(int deltaTime) {}
     virtual void onRender(const Renderer& renderer) {}
     virtual void onImGuiRender() {}
+
+  protected:
+    bool isKeyPressed(GLFWwindow *window, int key)
+    {
+      int state = glfwGetKey(window, key);
+
+      return state == GLFW_PRESS || state == GLFW_REPEAT;
+    }
   };
 
   class TestMenu : public Test

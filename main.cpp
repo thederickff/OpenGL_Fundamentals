@@ -20,6 +20,7 @@
 
 #include "Renderer.h"
 #include "tests/TestQuad.h"
+#include "tests/TestQuad3d.h"
 #include "tests/TestClearColor.h"
 
 int main(int argc, char** argv)
@@ -44,6 +45,8 @@ int main(int argc, char** argv)
 
     GLCall(glfwSwapInterval(1));
 
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
+
     glewExperimental = GL_TRUE;
 
     if (glewInit() != GLEW_OK)
@@ -67,13 +70,22 @@ int main(int argc, char** argv)
 
     testMenu->push("Clear Color Test", [](){ return new test::TestClearColor(); });
     testMenu->push("Quad Test", [](){ return new test::TestQuad(); });
+    testMenu->push("Quad Test 3d", [&](){ return new test::TestQuad3d(window); });
+
+
+    float deltaTime = 0.0f;
+    float lastFrame = 0.0f;
 
     while (!glfwWindowShouldClose(window))
     {
+        float currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         GLCall(glClearColor(0.0, 0.0, 0.0, 1.0));
         renderer.Clear();
 
-        currentTest->onUpdate(0);
+        currentTest->onUpdate(deltaTime * 1000);
         currentTest->onRender(renderer);
 
         ImGui_ImplOpenGL3_NewFrame();

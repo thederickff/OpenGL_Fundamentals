@@ -13,11 +13,11 @@ include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(./)
 include_directories(vendor)
 
-file(GLOB SOURCES tests/*.cpp *.cpp)
 file(GLOB STB_IMG_SRC vendor/stb_image/*.cpp)
 file(GLOB IMGUI_SRC vendor/imgui/*.cpp)
+file(GLOB SOURCES tests/*.cpp *.cpp)
 
 
-add_executable(myapp ${SOURCES} ${STB_IMG_SRC} ${IMGUI_SRC})
+add_executable(myapp ${STB_IMG_SRC} ${IMGUI_SRC} ${SOURCES})
 
 target_link_libraries(myapp ${OPENGL_gl_LIBRARY} glfw ${GLEW_LIBRARIES})
